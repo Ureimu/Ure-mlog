@@ -1,0 +1,32 @@
+set i -1
+op add i i 1
+getlink Link i
+jump 0 equal Link null
+jump 24 equal Turret null
+jump 1 equal Link Turret
+radar enemy any any distance Turret 1 Air
+jump 11 equal Air false
+control shootp Link Air Air Shoot 0
+jump 1 always Air false
+end
+radar ally player any distance Link 1 Player
+jump 18 equal Player false
+sensor x Player @shootX
+sensor y Player @shootY
+sensor Shoot Player @shooting
+control shoot Link x y Shoot 0
+jump 22 notEqual Player false
+sensor Shoot Turret @shooting
+sensor x Turret @shootX
+sensor y Turret @shootY
+control shoot Link x y Shoot 0
+jump 1 always x false
+end
+sensor Type Link @type
+jump 30 equal Type @foreshadow
+jump 30 equal Type @ripple
+jump 30 equal Type @hail
+jump 1 always x false
+end
+set Turret Link
+jump 1 always x false

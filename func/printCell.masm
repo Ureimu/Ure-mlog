@@ -1,0 +1,12 @@
+set i 0
+read result cell1 i
+print result
+print "  "
+op mod j i 8
+jump 10 equal j 7
+op add i i 1
+jump 1 lessThan i 64
+printflush message2
+end
+print "\n\n"
+jump 6 always x false

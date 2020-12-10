@@ -1,0 +1,26 @@
+ubind @poly
+ulocate ore core true @coal outx outy found building
+ucontrol approach outx outy 5 0 0
+ucontrol mine outx outy 0 0 0
+sensor loadNum @unit @totalItems
+print loadNum
+printflush message1
+jump 9 greaterThanEq loadNum 10
+end
+set linkNum -1
+op add linkNum linkNum 1
+print linkNum
+printflush message1
+jump 9 greaterThan linkNum @links
+getlink linked linkNum
+jump 17 notEqual linked false
+end
+sensor itemNum linked @totalItems
+sensor type linked @type
+jump 10 notEqual type @press
+jump 10 greaterThanEq itemNum 2
+sensor x linked @x
+sensor y linked @y
+ucontrol approach x y 2 0 0
+ulocate building factory false @copper outx outy found building
+ucontrol itemDrop building 8 0 0 0

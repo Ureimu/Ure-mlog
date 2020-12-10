@@ -1,0 +1,4 @@
+getlink LinkSwitch 2
+sensor status LinkSwitch @enabled
+jump 4 notEqual status false
+end

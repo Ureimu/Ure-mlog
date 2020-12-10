@@ -1,0 +1,8 @@
+radar ally player any distance Link 1 Player
+jump 5 equal Player false
+sensor x Player @shootX
+sensor y Player @shootY
+sensor Shoot Player @shooting
+control shoot Link x y Shoot 0
+jump 7 notEqual Player false
+control shoot Link x y Shoot 0

@@ -1,0 +1,7 @@
+draw clear 0 0 0 0 0 0
+draw image 32 32 @copper 32 0 0
+set result 0
+printflush message1
+drawflush display1
+draw display1
+jump

@@ -1,0 +1,36 @@
+ubind @poly
+ulocate ore core true @coal outx outy found building
+ucontrol approach outx outy 5 0 0
+ucontrol mine outx outy 0 0 0
+sensor loadNum @unit @totalItems
+jump 7 greaterThanEq loadNum 10
+end
+set linkNum -1
+op add linkNum linkNum 1
+jump 7 greaterThanEq linkNum @links
+read ifRunning cell1 linkNum
+jump 8 notEqual ifRunning 0
+write 1 cell1 linkNum
+getlink linked linkNum
+sensor type linked @type
+print type
+printflush message1
+jump 8 notEqual type @graphite-press
+sensor itemNum linked @totalItems
+jump 8 greaterThanEq itemNum 2
+sensor x linked @x
+sensor y linked @y
+ucontrol approach x y 2 0 0
+ucontrol within x y 4 ifReached 0
+jump 26 notEqual ifReached false
+end
+ucontrol getBlock x y @graphite-press building 0
+ucontrol itemDrop building 10 0 0 0
+write 0 cell1 linkNum
+set i @links
+read status cell1 i
+print status
+print " "
+op sub i i 1
+jump 30 greaterThanEq i 0
+printflush message2

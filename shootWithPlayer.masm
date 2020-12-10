@@ -1,0 +1,18 @@
+getlink LinkSwitch 2
+sensor status LinkSwitch @enabled
+jump 4 notEqual status false
+end
+ubind @dagger
+getlink Link 0
+radar ally player any distance Link 1 Player
+jump 17 equal Player false
+sensor x Player @shootX
+sensor y Player @shootY
+sensor Shoot Player @shooting
+ucontrol pathfind 0 0 0 0 0
+ucontrol approach x y 20 0 0
+ucontrol target x y Shoot 0 0
+getlink LinkScreen 1
+draw image 10 10 @metaglass 8 0 0
+drawflush LinkScreen
+end
